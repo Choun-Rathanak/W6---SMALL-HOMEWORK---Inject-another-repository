@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:homework/ui/states/settings_state.dart';
+import 'package:homework/homework_week7/ui/states/settings_state.dart';
 import 'package:provider/provider.dart';
  
 import '../../../model/settings/app_settings.dart';

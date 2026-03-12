@@ -1,5 +1,5 @@
 import 'package:flutter/widgets.dart';
-import 'package:homework/data/repositories/settings/setting_repository.dart';
+import 'package:homework/homework_week7/data/repositories/settings/setting_repository.dart';
  
 import '../../model/settings/app_settings.dart';
 

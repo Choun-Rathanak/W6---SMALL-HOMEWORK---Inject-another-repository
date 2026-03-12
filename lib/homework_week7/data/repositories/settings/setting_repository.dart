@@ -1,4 +1,4 @@
-import 'package:homework/model/settings/app_settings.dart';
+import 'package:homework/homework_week7/model/settings/app_settings.dart';
 
 abstract class SettingRepository {
   

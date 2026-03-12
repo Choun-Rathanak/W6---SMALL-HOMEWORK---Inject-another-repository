@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:homework/data/repositories/settings/setting_repository.dart';
-import 'package:homework/model/settings/app_settings.dart';
+import 'package:homework/homework_week7/data/repositories/settings/setting_repository.dart';
+import 'package:homework/homework_week7/model/settings/app_settings.dart';
 
 class SettingRepositoryMock implements SettingRepository {
   AppSettings curSettings = AppSettings(themeColor: ThemeColor.blue);
