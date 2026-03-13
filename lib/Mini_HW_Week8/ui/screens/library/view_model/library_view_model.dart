@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:homework/Mini_HW_Week8/ui/states/AsyncValueState.dart';
+import 'package:homework/Mini_HW_Week8/utils/AsyncValueState.dart';
 import '../../../../data/repositories/songs/song_repository.dart';
 import '../../../states/player_state.dart';
 import '../../../../model/songs/song.dart';
@@ -7,8 +7,7 @@ import '../../../../model/songs/song.dart';
 class LibraryViewModel extends ChangeNotifier {
   final SongRepository songRepository;
   final PlayerState playerState;
-  List<Song>? _songs;
- Asyncvalue<List<Song>>? songsValue;
+ late Asyncvalue<List<Song>> _songsValue;
 
   LibraryViewModel({required this.songRepository, required this.playerState, }) {
     playerState.addListener(notifyListeners);
@@ -17,8 +16,7 @@ class LibraryViewModel extends ChangeNotifier {
     _init();
   }
 
-  
-  List<Song> get songs => _songs == null ? [] : _songs!;
+  Asyncvalue<List<Song>> get songsValue => _songsValue;
 
   @override
   void dispose() {
@@ -30,14 +28,14 @@ class LibraryViewModel extends ChangeNotifier {
     // 1 - Fetch songs
     
     // 1- loading state
-     songsValue = Asyncvalue(data: null, error: null, state: AsyncValueState.loading);
+     _songsValue = Asyncvalue.loading();
      notifyListeners();
 
     try{
-      _songs = await songRepository.fetchSongs();
-      songsValue = Asyncvalue(data: songs, error: null, state: AsyncValueState.success);
+      List<Song> songs = await songRepository.fetchSongs();
+      _songsValue = Asyncvalue<List<Song>>.success(songs);
     }catch(e){
-      songsValue = Asyncvalue(data: null, error: e, state: AsyncValueState.error);
+      _songsValue = Asyncvalue.error(e);
     }
    
 

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:homework/Mini_HW_Week8/ui/states/AsyncValueState.dart';
-import 'package:homework/homework_week7/model/songs/song.dart';
+import 'package:homework/Mini_HW_Week8/utils/AsyncValueState.dart';
 import 'package:provider/provider.dart';
+import '../../../../model/songs/song.dart';
 import '../../../theme/theme.dart';
 import '../../../widgets/song/song_tile.dart';
 import '../view_model/library_view_model.dart';
@@ -29,10 +29,10 @@ class LibraryContent extends StatelessWidget {
       content = ListView.builder(
               itemCount: songs.length,
               itemBuilder: (context, index) => SongTile(
-                song: mv.songs[index],
-                isPlaying: mv.isSongPlaying(mv.songs[index]) ,
+                song: asyncvalue.data![index],
+                isPlaying: mv.isSongPlaying(asyncvalue.data![index]) ,
                 onTap: () {
-                  mv.start(mv.songs[index]);
+                  mv.start(asyncvalue.data![index]);
                 },
               ),
             );
